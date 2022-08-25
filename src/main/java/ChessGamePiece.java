@@ -101,7 +101,7 @@ public abstract class ChessGamePiece{
         if ( board.getCell( row, col ) != null ){
             board.getCell(row, col).setPieceOnSquare( this );
         }
-        if ( !this.skipMoveGeneration ){
+        if ( !this.skipMoveGeneration && board.getCell( row, col ) == null){
             possibleMoves = calculatePossibleMoves( board );
         }
     }

@@ -26,8 +26,7 @@ public class ChessPanel
         menuBar = new ChessMenuBar();
         gameBoard = new ChessGameBoard();
         gameLog = new ChessGameLog();
-        playerOneGraveyard = new ChessGraveyard( "Player 1's graveyard" );
-        playerTwoGraveyard = new ChessGraveyard( "Player 2's graveyard" );
+				MensajesPanel();
         this.add( menuBar, BorderLayout.NORTH );
         this.add( gameBoard, BorderLayout.CENTER );
         this.add( gameLog, BorderLayout.SOUTH );
@@ -36,6 +35,11 @@ public class ChessPanel
         this.setPreferredSize( new Dimension( 800, 600 ) );
         gameEngine = new ChessGameEngine( gameBoard ); // start the game
     }
+		
+		public void MensajesPanel(){
+				playerOneGraveyard = new ChessGraveyard( "Cementerio - Jugador 1" );
+        playerTwoGraveyard = new ChessGraveyard( "Cementerio - Jugador 2" );
+		}
     // ----------------------------------------------------------
     /**
      * Gets the logger object for use in other classes.

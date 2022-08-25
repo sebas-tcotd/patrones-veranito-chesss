@@ -1,5 +1,7 @@
 import javax.swing.ImageIcon;
+import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.Map;
 // -------------------------------------------------------------------------
 /**
  * Represents a Pawn game piece. Unique in that it can move two locations on its
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 public class Pawn
     extends ChessGamePiece{
     private boolean notMoved;
+		private Map<Integer, String> colors;
     // ----------------------------------------------------------
     /**
      * Create a new Pawn object.
@@ -124,21 +127,28 @@ public class Pawn
      */
     @Override
     public ImageIcon createImageByPieceType(){
-        if ( getColorOfPiece() == ChessGamePiece.WHITE ){
-            return new ImageIcon(
-                getClass().getResource("chessImages/WhitePawn.gif")
-            );            
+        setPieceColors();
+
+        // looping over colors
+        for (Integer color : this.colors.keySet())
+        {     
+            String imagePath = this.colors.get(color);
+
+            if( getColorOfPiece() == color){
+                return new ImageIcon(
+                        getClass().getResource(imagePath)
+                );
+            }
         }
-        else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
-            return new ImageIcon(
-                getClass().getResource("chessImages/BlackPawn.gif")
-            );            
-        }
-        else
-        {
-            return new ImageIcon(
+
+        return new ImageIcon(
                 getClass().getResource("chessImages/default-Unassigned.gif")
-            );           
-        }
+        );
+    }
+		private void setPieceColors(){
+        this.colors = Map.ofEntries(
+                new AbstractMap.SimpleEntry<>(ChessGamePiece.BLACK, "chessImages/BlackPawn.gif"),
+                new AbstractMap.SimpleEntry<>(ChessGamePiece.WHITE, "chessImages/WhitePawn.gif")
+        );
     }
 }

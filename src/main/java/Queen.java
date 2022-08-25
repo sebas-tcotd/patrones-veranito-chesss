@@ -43,7 +43,7 @@ public class Queen
         ArrayList<String> southMoves = calculateSouthMoves( board, 8 );
         ArrayList<String> eastMoves = calculateEastMoves( board, 8 );
         ArrayList<String> westMoves = calculateWestMoves( board, 8 );
-        ArrayList<String> allMoves = new ArrayList<String>();
+        ArrayList<String> allMoves = new ArrayList<>();
         allMoves.addAll( northEastMoves );
         allMoves.addAll( northWestMoves );
         allMoves.addAll( southWestMoves );
@@ -62,20 +62,13 @@ public class Queen
     @Override
     public ImageIcon createImageByPieceType(){
         if ( getColorOfPiece() == ChessGamePiece.WHITE ){
-            return new ImageIcon(
-                getClass().getResource("chessImages/WhiteQueen.gif")
-            );            
+            return new ImageIcon(getClass().getResource("chessImages/WhiteQueen.gif"));           
         }
         else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
-            return new ImageIcon(
-                getClass().getResource("chessImages/BlackQueen.gif")
-            );            
+            return new ImageIcon(getClass().getResource("chessImages/BlackQueen.gif"));          
         }
-        else
-        {
-            return new ImageIcon(
-                getClass().getResource("chessImages/default-Unassigned.gif")
-            ); 
+        else {
+            return new ImageIcon( getClass().getResource("chessImages/default-Unassigned.gif") );
         }
     }
 }

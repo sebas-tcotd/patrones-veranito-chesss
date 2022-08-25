@@ -1,5 +1,8 @@
 import javax.swing.ImageIcon;
+import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 // -------------------------------------------------------------------------
 /**
  * Represents a Knight game piece.
@@ -11,6 +14,7 @@ import java.util.ArrayList;
  */
 public class Knight
     extends ChessGamePiece{
+		private Map<Integer, String> colors;
     /**
      * Knight constructor for gamePiece
      *
@@ -97,21 +101,28 @@ public class Knight
      */
     @Override
     public ImageIcon createImageByPieceType(){
-        if ( getColorOfPiece() == ChessGamePiece.WHITE ){
-            return new ImageIcon(
-                getClass().getResource("chessImages/WhiteKnight.gif")
-            );            
+        setPieceColors();
+
+        for (Integer color : this.colors.keySet())
+        {          
+            // search for path
+            String imagePath = this.colors.get(color);
+
+            if( getColorOfPiece() == color){
+                return new ImageIcon(
+                        getClass().getResource(imagePath)
+                );
+            }
         }
-        else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
-            return new ImageIcon(
-                getClass().getResource("chessImages/BlackKnight.gif")
-            );            
-        }
-        else
-        {
-            return new ImageIcon(
+
+        return new ImageIcon(
                 getClass().getResource("chessImages/default-Unassigned.gif")
-            );            
-        }
+        );
+    }
+		public void setPieceColors(){
+        this.colors = Map.ofEntries(
+								new AbstractMap.SimpleEntry<>(ChessGamePiece.BLACK, "chessImages/BlackKnight.gif"),
+                new AbstractMap.SimpleEntry<>(ChessGamePiece.WHITE, "chessImages/WhiteKnight.gif")
+        );
     }
 }
