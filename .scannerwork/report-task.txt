@@ -1,0 +1,6 @@
+projectKey=final-mantenimiento
+serverUrl=http://localhost:9000
+serverVersion=9.6.0.59041
+dashboardUrl=http://localhost:9000/dashboard?id=final-mantenimiento
+ceTaskId=AYLW_Nir53skzE4n4A28
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYLW_Nir53skzE4n4A28
